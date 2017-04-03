@@ -43,7 +43,7 @@ class AlexaRouter {
                         "response": {
                             "outputSpeech": {
                                 "type": "SSML",
-                                "ssml": "<speak>Hello, you are doing a fine job.</speak>"
+                                "ssml": "<speak>You are doing a fine job.</speak>"
                             },
                             "shouldEndSession": false
                         }
