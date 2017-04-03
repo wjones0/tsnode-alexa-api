@@ -10,17 +10,47 @@ class AlexaRouter {
         this.init();
     }
     Greeting(req, res, next) {
-        let alres = {
-            "version": "1.0",
-            "response": {
-                "outputSpeech": {
-                    "type": "SSML",
-                    "ssml": "<speak>Hello, you are doing a fine job.</speak>"
-                },
-                "shouldEndSession": false
+        let alreq = JSON.parse(req.body);
+        if (alreq.request.type === "LaunchRequest") {
+            res.send({
+                "version": "1.0",
+                "response": {
+                    "outputSpeech": {
+                        "type": "SSML",
+                        "ssml": "<speak>Hello, welcome to the paradise of Hank.  The Hankadise.</speak>"
+                    },
+                    "shouldEndSession": false
+                }
+            });
+        }
+        else {
+            if (alreq.request.type === "IntentRequest") {
+                if (alreq.request.intent.name === "AMAZON.StopIntent") {
+                    res.send({
+                        "version": "1.0",
+                        "response": {
+                            "outputSpeech": {
+                                "type": "SSML",
+                                "ssml": "<speak>Hello, you are doing a fine job.</speak>"
+                            },
+                            "shouldEndSession": true
+                        }
+                    });
+                }
             }
-        };
-        res.send(alres);
+            else {
+                res.send({
+                    "version": "1.0",
+                    "response": {
+                        "outputSpeech": {
+                            "type": "SSML",
+                            "ssml": "<speak>Hello, you are doing a fine job.</speak>"
+                        },
+                        "shouldEndSession": false
+                    }
+                });
+            }
+        }
     }
     /**
      * Take each handler, and attach to one of the Express.Router's

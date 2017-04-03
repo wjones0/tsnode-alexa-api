@@ -1,5 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { AlexaResponse } from '../models/AlexaResponse';
+import { AlexaRequest } from "../models/AlexaRequest";
 
 export class AlexaRouter {
     router: Router
@@ -13,18 +14,48 @@ export class AlexaRouter {
     }
 
     public Greeting(req: Request, res: Response, next: NextFunction) {
-        let alres: AlexaResponse =
-            {
+        let alreq: AlexaRequest = JSON.parse(req.body);
+
+        if (alreq.request.type === "LaunchRequest") {
+            res.send({
                 "version": "1.0",
                 "response": {
                     "outputSpeech": {
                         "type": "SSML",
-                        "ssml": "<speak>Hello, you are doing a fine job.</speak>"
+                        "ssml": "<speak>Hello, welcome to the paradise of Hank.  The Hankadise.</speak>"
                     },
                     "shouldEndSession": false
                 }
+
+            });
+        }
+        else {
+            if (alreq.request.type === "IntentRequest") {
+                if (alreq.request.intent.name === "AMAZON.StopIntent") {
+                    res.send({
+                        "version": "1.0",
+                        "response": {
+                            "outputSpeech": {
+                                "type": "SSML",
+                                "ssml": "<speak>Hello, you are doing a fine job.</speak>"
+                            },
+                            "shouldEndSession": true
+                        }
+                    });
+                }
+            } else {
+                res.send({
+                    "version": "1.0",
+                    "response": {
+                        "outputSpeech": {
+                            "type": "SSML",
+                            "ssml": "<speak>Hello, you are doing a fine job.</speak>"
+                        },
+                        "shouldEndSession": false
+                    }
+                });
             }
-        res.send(alres);
+        }
     }
 
     /**
