@@ -26,7 +26,7 @@ class AlexaRouter {
      * endpoints.
      */
     init() {
-        this.router.get('/', this.Greeting);
+        this.router.post('/', this.Greeting);
     }
 }
 exports.AlexaRouter = AlexaRouter;
