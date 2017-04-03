@@ -17,7 +17,7 @@ class AlexaRouter {
                     "type": "SSML",
                     "ssml": "<speak>Hello, you are doing a fine job.</speak>"
                 },
-                "shouldEndSession": true
+                "shouldEndSession": false
             }
         };
         res.send(alres);
