@@ -21,7 +21,7 @@ export class AlexaRouter {
                 "response": {
                     "outputSpeech": {
                         "type": "SSML",
-                        "ssml": "<speak>Hello, welcome to the paradise of Hank.  The Hankadise.</speak>"
+                        "ssml": "<speak>Hello, welcome to the Hank of Hank.</speak>"
                     },
                     "shouldEndSession": false
                 }
@@ -36,7 +36,7 @@ export class AlexaRouter {
                         "response": {
                             "outputSpeech": {
                                 "type": "SSML",
-                                "ssml": "<speak>Hello, you are doing a fine job.</speak>"
+                                "ssml": "<speak>Have a great day!</speak>"
                             },
                             "shouldEndSession": true
                         }
