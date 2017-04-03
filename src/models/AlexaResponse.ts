@@ -8,8 +8,8 @@ export class AlexaResponse {
     response: {
         outputSpeech?: {
             type: string;
-            text: string;
-            ssml: string;
+            text?: string;
+            ssml?: string;
         };
         card?: {
             type: string;

@@ -10,16 +10,17 @@ class AlexaRouter {
         this.init();
     }
     Greeting(req, res, next) {
-        res.send({
+        let alres = {
             "version": "1.0",
             "response": {
                 "outputSpeech": {
-                    "type": "PlainText",
-                    "text": "Hello, you are doing a fine job."
+                    "type": "SSML",
+                    "text": "<speak>Hello, you are doing a fine job.</speak>"
                 },
                 "shouldEndSession": true
             }
-        });
+        };
+        res.send(alres);
     }
     /**
      * Take each handler, and attach to one of the Express.Router's

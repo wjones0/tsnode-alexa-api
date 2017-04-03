@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
+import { AlexaResponse } from '../models/AlexaResponse';
 
 export class AlexaRouter {
     router: Router
@@ -12,16 +13,18 @@ export class AlexaRouter {
     }
 
     public Greeting(req: Request, res: Response, next: NextFunction) {
-        res.send({
-            "version": "1.0",
-            "response": {
-                "outputSpeech": {
-                    "type": "PlainText",
-                    "text": "Hello, you are doing a fine job."
-                },
-                "shouldEndSession": true
+        let alres: AlexaResponse =
+            {
+                "version": "1.0",
+                "response": {
+                    "outputSpeech": {
+                        "type": "SSML",
+                        "text": "<speak>Hello, you are doing a fine job.</speak>"
+                    },
+                    "shouldEndSession": true
+                }
             }
-        });
+        res.send(alres);
     }
 
     /**
