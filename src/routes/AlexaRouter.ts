@@ -14,8 +14,7 @@ export class AlexaRouter {
     }
 
     public Greeting(req: Request, res: Response, next: NextFunction) {
-        let alreq: AlexaRequest = JSON.parse(req.body);
-
+        let alreq: AlexaRequest = req.body;
         if (alreq.request.type === "LaunchRequest") {
             res.send({
                 "version": "1.0",

@@ -10,7 +10,7 @@ class AlexaRouter {
         this.init();
     }
     Greeting(req, res, next) {
-        let alreq = JSON.parse(req.body);
+        let alreq = req.body;
         if (alreq.request.type === "LaunchRequest") {
             res.send({
                 "version": "1.0",
